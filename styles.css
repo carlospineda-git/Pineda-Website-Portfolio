@@ -3,6 +3,8 @@
 :root {
   --bg: #020202;
   --text: #f5f5f5;
+  --bg-halftone: rgba(205, 202, 202, 0.4);
+  --blend: darken;
 
   --h1: clamp(1.5rem, 5vw, 30px);
   --p: 12px;
@@ -26,6 +28,8 @@ p {
   :root {
     --bg: #f5f5f5;
     --text: #020202;
+    --bg-halftone: rgba(40, 40, 40, 0.4);
+    --blend: screen;
     }
 }
 
@@ -203,38 +207,34 @@ header.show {
   color: var(--bg);
   font-size: var(--p);
   opacity: 0.8;
-  transition: opacity, color 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .fi-bs-arrow-up-right {
   color: var(--bg);
-  font-size: 9px;
+  font-size: 6px;
   opacity: 0.8;
   display: inline-block;
   padding-left: 5px;
   transform: translate(0, 0);
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .profile-header ul li .social:hover {
-  color: darkviolet;
   opacity: 1;
 }
 
 .profile-header ul li .git:hover .github {
-  color: darkviolet;
   opacity: 1;
   transform: translate(3px, -3px);
 }
 
 .profile-header ul li .tik:hover .tiktok {
-  color: darkviolet;
   opacity: 1;
   transform: translate(3px, -3px);
 }
 
 .profile-header ul li .ig:hover .insta {
-  color: darkviolet;
   opacity: 1;
   transform: translate(3px, -3px);
 }
@@ -248,6 +248,27 @@ header.show {
   display: block;
   border-radius: 5px;
   filter: grayscale(100%) contrast(150%) brightness(98%);
+}
+
+#sc {
+  position: fixed;
+  top: auto;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  height: 100vh;
+  pointer-events: none;
+}
+
+#sc {
+  content: "";
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: var(--blend);
+  background-color: var(--text);
+  background-image: radial-gradient(var(--bg-halftone) 1px, transparent 1.5px);
+  background-size: 10px 10px;
+  mask-image: linear-gradient(rgba(255, 255, 255 / 0), rgb(255, 254, 254));
 }
 
 .c2 .profile .image-wrapper {
