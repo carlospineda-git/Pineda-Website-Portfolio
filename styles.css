@@ -3,7 +3,7 @@
 :root {
   --bg: #020202;
   --text: #f5f5f5;
-  --bg-halftone: rgba(205, 202, 202, 0.4);
+  --bg-halftone: rgba(238, 233, 233, 0.4);
   --blend: darken;
 
   --h1: clamp(1.5rem, 5vw, 30px);
@@ -17,10 +17,13 @@
   box-sizing: border-box;
   /*border: 1px solid tomato;*/
   font-family: "JetBrains Mono", monospace;
+  user-select: none;
 }
 
 p {
+  color: var(--bg);
   font-size: var(--p);
+  opacity: 0.8;
 }
 
 /* Dark mode styles */
@@ -28,7 +31,7 @@ p {
   :root {
     --bg: #f5f5f5;
     --text: #020202;
-    --bg-halftone: rgba(40, 40, 40, 0.4);
+    --bg-halftone: rgba(26, 26, 26, 0.4);
     --blend: screen;
     }
 }
@@ -38,8 +41,17 @@ html {
 }
 
 a {
+  font-size: var(--p);
   text-decoration: none;
-  color: var(--text);
+  color: var(--bg);
+  opacity: 0.8;
+}
+
+.seperator {
+  background-color: #020202;
+  width: 100%;
+  height: 1px;
+  margin: 0.5rem 0 0.5rem 0;
 }
 
 .header {
@@ -170,6 +182,7 @@ header.show {
   width: fit-content;
   padding: 15px;
   margin-top: 8vh;
+  margin-bottom: 12vh;
 }
 
 .c2 .profile .profile-header {
@@ -288,6 +301,73 @@ header.show {
   background-image: radial-gradient(rgb(255 255 255 / 0.4) 1px, transparent 1.5px);
   background-size: 10px 10px;
   mask-image: linear-gradient(rgb(0 0 0 / 0), rgb(0 0 0));
+}
+
+
+
+
+/* Projects Container --------- */
+.project {
+  padding: 15px;
+}
+
+.project-body {
+  position: relative;
+  background-color: #2b2b2b;
+  border-radius: 20px;
+  padding: 15px;
+  z-index: 1002;
+}
+
+.project, .project-body, .project-container {
+  width: 100%;
+}
+
+.project-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4vh;
+}
+
+.project-header a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.project-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-info {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+
+.project-logo {
+  margin: 50px;
+}
+
+.project-description {
+  text-align: left;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.project-name, .project-about {
+  width: 100%;
+  height: 100%;
+}
+
+.project-view {
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 /* Media Queries ------------ */
