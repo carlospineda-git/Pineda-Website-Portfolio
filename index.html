@@ -4,17 +4,34 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Project 1</title>
+        <script>
+            (function() {
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme) {
+                    document.documentElement.setAttribute('data-theme', savedTheme);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            })();
+        </script>
         <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css'>
     </head>
     <body>
         <header class="header" id="header">
-            <p class="brand">codewmiguel</p>
-            <nav class="nav">
+            <div class="header-top">
+                <p class="brand">codewmiguel</p>
+                <div class="header-controls">
+                    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Switch to dark theme"><i class="fas fa-moon"></i></button>
+                    <button id="hamburger-toggle" class="hamburger-btn" aria-label="Open navigation menu"><i class="fas fa-bars"></i></button>
+                </div>
+            </div>
+            <nav class="nav" id="nav-menu">
                 <ul class="nav-list">
                     <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -22,21 +39,41 @@
         </header>
         
         <main class="scroll-container" id="scroll-container">
-            <section class="c1 snap-section" id="home">
+            <section class="c1 snap-section reveal-on-scroll" id="home">
                 <div class="icon-grid">
-                    <a href="https://github.com"><i class="fab fa-github"></i></a>
-                    <a href=""><i class="fas fa-user"></i></a>
-                    <a href=""><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/carlospineda-git" aria-label="GitHub Profile" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                    <a href="#about" aria-label="About Profile"><i class="fas fa-user"></i></a>
+                    <a href="#contact" aria-label="Contact"><i class="fas fa-envelope"></i></a>
                 </div>
-                <div>
+                <div class="c1-title">
                     <h1>Welcome to my</h1>
-                    <h1>Portfolio Website</h1>
+                    <h1>Nigga James</h1>
+                </div>
+
+                <div class="hero-terminal" role="region" aria-label="Interactive Terminal CLI">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <span class="terminal-title">carlospineda@portfolio:~</span>
+                    </div>
+                    <div class="terminal-body">
+                        <div id="terminal-output" class="terminal-output" aria-live="polite">
+                            <p class="term-line term-welcome">Type <span class="term-highlight">help</span> to view available commands.</p>
+                        </div>
+                        <div class="terminal-input-line">
+                            <span class="terminal-prompt">carlospineda@dev:~$</span>
+                            <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal Command Input" placeholder="type a command...">
+                        </div>
+                    </div>
                 </div>
             </section>
             
-            <section class="c2 snap-section" id="hero">
-                <div class="c2-inner">
-                    <div class="profile">
+            <section class="c2 snap-section reveal-on-scroll" id="hero">
+                <div class="c2-inner reveal-on-scroll">
+                    <div class="profile reveal-on-scroll" id="about">
                         <div class="image-wrapper">
                             <img src="./assets/profile.jpg" alt="Profile Picture" class="profile-picture">
                         </div>
@@ -46,37 +83,109 @@
                                 <p class="skill-name">FULL-STACK SOFTWARE ENGINEER</p>
                             </div>
                             <p>I am a passionate developer aspiring to become a skilled Full-Stack Software Engineer.</p>
-                            <p>I build websites, toools, automation systems, Android utilities, and experimental projects.</p>
+                            <p>I build websites, tools, automation systems, Android utilities, and experimental projects.</p>
                             <ul>
-                                <li><a href="https://github.com/carlospineda-git" class="social git">github<i class="fi fi-bs-arrow-up-right github"></i></a></li>
-                                <li><a href="https://www.tiktok.com/@codewmiguel" class="social tik">tiktok<i class="fi fi-bs-arrow-up-right tiktok"></i></a></li>
-                                <li><a href="https://www.instagram.com/loss.migz" class="social ig">instagram<i class="fi fi-bs-arrow-up-right insta"></i></a></li>
+                                <li><a href="https://github.com/carlospineda-git" class="social git" aria-label="GitHub Profile" target="_blank" rel="noopener noreferrer">github<i class="fi fi-bs-arrow-up-right github"></i></a></li>
+                                <li><a href="https://www.tiktok.com/@codewmiguel" class="social tik" aria-label="TikTok Profile" target="_blank" rel="noopener noreferrer">tiktok<i class="fi fi-bs-arrow-up-right tiktok"></i></a></li>
+                                <li><a href="https://www.instagram.com/loss.migz" class="social ig" aria-label="Instagram Profile" target="_blank" rel="noopener noreferrer">instagram<i class="fi fi-bs-arrow-up-right insta"></i></a></li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="project">
+                    <div class="project reveal-on-scroll" id="projects">
                         <div class="project-header">
-                            <p>01 - projects</p>
-                            <a>ALL PROJECTS<i class="fi fi-rr-arrow-right"></i></a>
+                            <p class="project-label">01 - projects</p>
+                            <a href="#projects" class="project-view-all">ALL PROJECTS<i class="fi fi-rr-arrow-right"></i></a>
                         </div>
 
-                        <div class="project-body">
-                            <div class="project-container">
-                                <div class="project-info">
-                                    <div class="project-logo">
-                                        <p>logo</p>
-                                    </div>
-                                    <div class="project-description">
-                                        <p class="project-name">Name</p>
-                                        <p class="project-about">Description</p>
-                                    </div>
+                        <div class="project-card reveal-on-scroll">
+                            <div class="project-image-wrapper">
+                                <img src="./assets/project-thumb.jpg" alt="Project Thumbnail" class="project-image" onerror="this.style.display='none'">
+                            </div>
+                            <div class="project-content">
+                                <div class="project-meta">
+                                    <p class="project-name">Project Name</p>
+                                    <p class="project-about">A brief description of the project highlighting key features, technologies used, and the problem it solves. This text should be informative and engaging.</p>
                                 </div>
-                                <div class="seperator"></div>
-                                <div class="project-view">
-                                    <a class="project-link">View project<i class="fi fi-rr-arrow-right"></i></a>
+                                <div class="project-tech">
+                                    <span class="tech-tag">React</span>
+                                    <span class="tech-tag">Node.js</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                    <span class="tech-tag">TypeScript</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#projects" class="project-link">View Project<i class="fi fi-rr-arrow-right"></i></a>
+                                    <a href="#" class="project-link github-link"><i class="fab fa-github"></i>Code</a>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="skills-section reveal-on-scroll" id="skills">
+                        <div class="skills-header">
+                            <p>02 - skills & tech stack</p>
+                        </div>
+                        <div class="skills-grid">
+                            <div class="skill-badge">
+                                <i class="fab fa-html5"></i>
+                                <span>HTML5</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fab fa-css3-alt"></i>
+                                <span>CSS3</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fab fa-js"></i>
+                                <span>JavaScript ES6+</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fab fa-node-js"></i>
+                                <span>Node.js</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fab fa-python"></i>
+                                <span>Python</span>
+                            </div>
+                            <div class="skill-badge">
+                                <i class="fab fa-git-alt"></i>
+                                <span>Git</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-section reveal-on-scroll" id="contact">
+                        <div class="contact-header">
+                            <p>03 - contact</p>
+                            <h2>Get In Touch</h2>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-info">
+                                <p class="contact-desc">Have a question, project idea, or collaboration opportunity? Feel free to reach out directly via email or form.</p>
+                                <button id="copy-email-btn" class="contact-email-btn" aria-label="Copy email address to clipboard">
+                                    <i class="fas fa-envelope"></i>
+                                    <span id="email-text">carlospineda@dev.com</span>
+                                    <i class="fas fa-copy copy-icon"></i>
+                                </button>
+                            </div>
+                            <form id="contact-form" class="contact-form" action="#" method="POST">
+                                <div class="form-group">
+                                    <label for="contact-name">Name</label>
+                                    <input type="text" id="contact-name" name="name" placeholder="Your Name" required autocomplete="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-email">Email</label>
+                                    <input type="email" id="contact-email" name="email" placeholder="your.email@example.com" required autocomplete="email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-message">Message</label>
+                                    <textarea id="contact-message" name="message" rows="4" placeholder="Your message here..." required></textarea>
+                                </div>
+                                <button type="submit" class="submit-btn">
+                                    <span>Send Message</span>
+                                    <i class="fi fi-rr-arrow-right"></i>
+                                </button>
+                                <p id="form-status" class="form-status" aria-live="polite"></p>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -84,5 +193,6 @@
         </main>
         <div id="sc"></div>
         <script src="app.js"></script>
+        <script src="head.js"></script>
     </body>
 </html>
