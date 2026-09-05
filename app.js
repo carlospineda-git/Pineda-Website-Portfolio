@@ -297,7 +297,7 @@ function executeTerminalCommand(cmd) {
       break;
 
     case "contact":
-      printTermLine("Email: carlospineda@dev.com | Form available below");
+      printTermLine("Email: pinedacarlosmiguel06@gmail.com | Form available below");
       scrollToSection("contact");
       break;
 
