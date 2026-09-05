@@ -26,7 +26,7 @@ p {
   opacity: 0.8;
 }
 
-/* Smooth Animations & Transition Globals */
+/* Smooth Animations & Transition Globals ----------- */
 body, .c1, .c2, header, .project-card, .skill-card, .hero-terminal, .profile-picture {
   transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
@@ -39,7 +39,7 @@ a:active, button:active {
   transform: scale(0.96);
 }
 
-/* Scroll Reveal Animations */
+/* Scroll Reveal Animations ------------ */
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(20px);
@@ -52,7 +52,7 @@ a:active, button:active {
   transform: translateY(0);
 }
 
-/* Initial Page Load Animations & Staggered Slide In */
+/* Initial Page Load Animations & Staggered Slide In ------------ */
 @keyframes loadFadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -80,7 +80,7 @@ a:active, button:active {
   }
 }
 
-/* Landing Hero Staggered Content Load */
+/* Landing Hero Staggered Content Load ------------ */
 .c1 .icon-grid {
   animation: loadSlideDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
 }
@@ -93,7 +93,7 @@ a:active, button:active {
   animation: loadSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards;
 }
 
-/* Dark mode styles */
+/* Dark mode styles ------------ */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #f5f5f5;
@@ -103,7 +103,7 @@ a:active, button:active {
     }
 }
 
-/* Explicit Data Theme Attribute Overrides */
+/* Explicit Data Theme Attribute Overrides ----------- */
 html[data-theme="light"] {
   --bg: #020202;
   --text: #f5f5f5;
@@ -223,7 +223,7 @@ header.show {
   outline: 1px auto var(--bg);
 }
 
-/* Mobile Collapsed State Defaults (<64rem) */
+/* Mobile Collapsed State Defaults ------------ */
 @media (max-width: 63.99rem) {
   .header:not(.mobile-open) .nav {
     display: none;
@@ -441,7 +441,7 @@ header.show {
   gap: 0.35rem;
 }
 
-/* Keyframes for Terminal & Smooth Animations */
+/* Keyframes for Terminal & Smooth Animations ------------ */
 @keyframes termFadeIn {
   from {
     opacity: 0;
@@ -667,7 +667,7 @@ header.show {
 
 
 
-/* Projects Container --------- */
+/* Projects Container ------------ */
 .project {
   padding: 15px;
   margin-bottom: 4vh;
@@ -707,7 +707,7 @@ header.show {
   font-size: 8px;
 }
 
-/* Project Card */
+/* Project Card ------------ */
 .project-card {
   position: relative;
   width: 100%;
@@ -724,7 +724,7 @@ header.show {
   transform: translateY(-2px);
 }
 
-/* Halftone overlay on card hover */
+/* Halftone overlay on card hover ------------ */
 .project-card::after {
   content: "";
   position: absolute;
@@ -741,7 +741,7 @@ header.show {
   opacity: 1;
 }
 
-/* Project Image */
+/* Project Image ------------ */
 .project-image-wrapper {
   position: relative;
   width: 100%;
@@ -776,7 +776,7 @@ header.show {
   transform: scale(1.02);
 }
 
-/* Project Content */
+/* Project Content ------------ */
 .project-content {
   padding: 16px;
   display: flex;
@@ -829,7 +829,7 @@ header.show {
   border-color: var(--bg);
 }
 
-/* Project Links */
+/* Project Links ------------ */
 .project-links {
   display: flex;
   align-items: center;
@@ -1039,7 +1039,7 @@ header.show {
   opacity: 0.6;
 }
 
-/* Contact Form */
+/* Contact Form ------------ */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -1172,7 +1172,11 @@ textarea:focus-visible,
 @media (min-width: 48rem) {
 }
 
-@media (min-width: 64rem) {  
+@media (min-width: 64rem) {
+  .header.show {
+    transform: translateX(0);
+  }
+
   .hamburger-btn {
     display: none !important;
   }
@@ -1185,7 +1189,6 @@ textarea:focus-visible,
     display: flex !important;
   }
 
-  /* Desktop: header remains as top bar, not sidebar */
   .header {
     right: 80vw;
     height: 100vh;
@@ -1233,21 +1236,3 @@ textarea:focus-visible,
 
 @media (min-width: 90rem) {
 }
-
-/*
-@media (max-width: 768px) {
-    .snap-section {
-        min-height: 100vh;
-    }
-    
-    .c1, .c2 {
-        padding: 20px;
-    }
-}
-
-@media (min-width: 769px) {
-    .snap-section {
-        height: 100vh;
-    }
-}
-    */

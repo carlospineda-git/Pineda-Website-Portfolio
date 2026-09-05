@@ -56,14 +56,14 @@ if (hamburgerToggle && header) {
   if (navMenu) {
     navMenu.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", (e) => {
-        // Smooth scroll to target section
+        // Smooth scroll to target section ------------
         const href = link.getAttribute("href");
         if (href && href.startsWith("#")) {
           e.preventDefault();
           const targetId = href.slice(1);
           scrollToSection(targetId);
         }
-        // Close mobile menu
+        // Close mobile menu ------------
         header.classList.remove("mobile-open");
         hamburgerToggle.setAttribute("aria-label", "Open navigation menu");
         hamburgerToggle.innerHTML = '<i class="fas fa-bars"></i>';
@@ -72,18 +72,18 @@ if (hamburgerToggle && header) {
   }
 }
 
-// Header Show/Hide Based on Container Intersection
+// Header Show/Hide Based on Container Intersection -------------
 if (header && c1) {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           if (entry.target === c1) {
-            // Hide header when container 1 is visible
+            // Hide header when container 1 is visible ------------
             c2.classList.remove("padding-left");
             header.classList.remove("show");
           } else {
-            // Show header when other sections are visible
+            // Show header when other sections are visible ------------
             c2.classList.add("padding-left");
             header.classList.add("show");
           }
@@ -91,7 +91,7 @@ if (header && c1) {
       });
     },
     {
-      root: null, // use viewport instead of scrollcontainer
+      root: null,
       threshold: 0.2,
     },
   );
@@ -101,7 +101,7 @@ if (header && c1) {
   });
 }
 
-// Scroll Reveal Observer for Smooth Section Animations
+// Scroll Reveal Observer for Smooth Section Animations -----------
 const revealElements = document.querySelectorAll(".reveal-on-scroll");
 if (revealElements.length > 0) {
   const revealObserver = new IntersectionObserver(
@@ -122,7 +122,7 @@ if (revealElements.length > 0) {
   revealElements.forEach((el) => revealObserver.observe(el));
 }
 
-// Email Copy to Clipboard
+// Email Copy to Clipboard ------------
 const copyEmailBtn = document.getElementById("copy-email-btn");
 const emailText = document.getElementById("email-text");
 
@@ -161,7 +161,8 @@ if (contactForm && formStatus) {
     }, 5000);
   });
 }
-// Interactive Hero Terminal Engine
+
+// Interactive Hero Terminal Engine ------------
 const termInput = document.getElementById("terminal-input");
 const termOutput = document.getElementById("terminal-output");
 const cmdHistory = [];
