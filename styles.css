@@ -326,20 +326,6 @@ header.show {
   .header.mobile-open .nav-list li:nth-child(5) a {
     animation: slideInLink 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
   }
-
-  /* Reduced motion support 
-  @media (prefers-reduced-motion: reduce) {
-    .header .nav,
-    .header .nav-list a,
-    .hamburger-btn i {
-      transition: none !important;
-    }
-
-    .header .nav-list a {
-      opacity: 1;
-      transform: none;
-    }
-  }*/
 }
 
 .header .brand {
