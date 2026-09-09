@@ -1050,15 +1050,6 @@ header.show {
 .experience-section.revealed .timeline-item:nth-child(4) { transition-delay: 0.4s; }
 .experience-section.revealed .timeline-item:nth-child(5) { transition-delay: 0.5s; }
 
-/* Reduced Motion
-@media (prefers-reduced-motion: reduce) {
-  .experience-section .timeline-item {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}*/
-
 /* Skills & Tech Stack Section ------------ */
 .skills-section {
   width: 100%;
