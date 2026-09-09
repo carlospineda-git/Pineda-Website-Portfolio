@@ -251,13 +251,24 @@ header.show {
     pointer-events: none;
   }
 
+  .header-footer {
+    display: none;
+  }
+
+  .header.mobile-open .header-footer {
+    display: flex;
+    align-items: end;
+    flex-grow: 1;
+    border: red 1px solid;
+  }
+
   /* Base header transition setup */
   .header {
     transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .header.mobile-open {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
@@ -326,6 +337,7 @@ header.show {
   .header.mobile-open .nav-list li:nth-child(5) a {
     animation: slideInLink 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
   }
+
 }
 
 .header .brand {
