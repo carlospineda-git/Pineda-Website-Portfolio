@@ -349,7 +349,7 @@ header.show {
 
 .header .nav-list a {
   color: var(--bg);
-  font-size: 14px;
+  font-size: 12px;
   transition: opacity 0.2s ease, font-weight 0.2s ease;
 }
 
@@ -726,9 +726,6 @@ header.show {
   background-size: 10px 10px;
   mask-image: linear-gradient(rgb(0 0 0 / 0), rgb(0 0 0));
 }
-
-
-
 
 /* Projects Container ------------ */
 .project {
