@@ -81,6 +81,15 @@ a:active, button:active {
   }
 }
 
+@keyframes slideInLink {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.8;
+  }
+}
+
 /* Landing Hero Staggered Content Load ------------ */
 .c1 .icon-grid {
   animation: loadSlideDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
@@ -212,11 +221,17 @@ header.show {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .theme-toggle-btn:hover,
 .hamburger-btn:hover {
   opacity: 1;
+}
+
+/* Hamburger icon rotation animation */
+.header.mobile-open .hamburger-btn i {
+  transform: rotate(180deg);
 }
 
 .theme-toggle-btn:focus-visible,
@@ -226,8 +241,19 @@ header.show {
 
 /* Mobile Collapsed State Defaults ------------ */
 @media (max-width: 63.99rem) {
+  /* Hidden nav state - animated out */
   .header:not(.mobile-open) .nav {
-    display: none;
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+  }
+
+  /* Base header transition setup */
+  .header {
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .header.mobile-open {
@@ -254,13 +280,19 @@ header.show {
     flex-shrink: 0;
   }
 
+  /* Nav slide in animation */
   .header.mobile-open .nav {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     margin-top: 40px;
     width: 100%;
+    transition: opacity 0.3s ease 0.1s, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
   }
 
   .header.mobile-open .nav-list {
@@ -271,10 +303,43 @@ header.show {
     width: 100%;
   }
 
+    /* Staggered nav link animations - base state */
   .header.mobile-open .nav-list a {
+    opacity: 0;
     font-size: 12px;
     font-weight: normal;
   }
+
+  /* Animate each nav link with staggered delays */
+  .header.mobile-open .nav-list li:nth-child(1) a {
+    animation: slideInLink 0.1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+  }
+  .header.mobile-open .nav-list li:nth-child(2) a {
+    animation: slideInLink 0.15s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+  }
+  .header.mobile-open .nav-list li:nth-child(3) a {
+    animation: slideInLink 0.25s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+  }
+  .header.mobile-open .nav-list li:nth-child(4) a {
+    animation: slideInLink 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  }
+  .header.mobile-open .nav-list li:nth-child(5) a {
+    animation: slideInLink 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+  }
+
+  /* Reduced motion support 
+  @media (prefers-reduced-motion: reduce) {
+    .header .nav,
+    .header .nav-list a,
+    .hamburger-btn i {
+      transition: none !important;
+    }
+
+    .header .nav-list a {
+      opacity: 1;
+      transform: none;
+    }
+  }*/
 }
 
 .header .brand {
@@ -285,16 +350,13 @@ header.show {
 .header .nav-list a {
   color: var(--bg);
   font-size: 14px;
+  transition: opacity 0.2s ease, font-weight 0.2s ease;
 }
 
-/* ----- nav hover effect
 .header .nav-list a:hover {
-    color: #f5f5f5;
-    background-color: #28282b;
-    border-radius: 10px;
-    padding: 5px 10px;
+  opacity: 1;
+  font-weight: 600;
 }
-*/
 
 .header .nav-list {
   list-style: none;
@@ -766,7 +828,7 @@ header.show {
 .project-image {
   width: 100%;
   height: 100%;
-  object-fit: fit;
+  object-fit: cover;
   display: block;
   filter: grayscale(100%) contrast(120%) brightness(95%);
   transition: filter 0.3s ease, transform 0.3s ease;
@@ -779,6 +841,7 @@ header.show {
 
 /* Project Content ------------ */
 .project-content {
+  padding: 15px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -1004,14 +1067,14 @@ header.show {
 .experience-section.revealed .timeline-item:nth-child(4) { transition-delay: 0.4s; }
 .experience-section.revealed .timeline-item:nth-child(5) { transition-delay: 0.5s; }
 
-/* Reduced Motion */
+/* Reduced Motion
 @media (prefers-reduced-motion: reduce) {
   .experience-section .timeline-item {
     opacity: 1;
     transform: none;
     transition: none;
   }
-}
+}*/
 
 /* Skills & Tech Stack Section ------------ */
 .skills-section {
@@ -1273,29 +1336,6 @@ textarea:focus-visible,
   outline: 2px solid var(--bg);
   outline-offset: 2px;
 }
-
-/* Media Queries ------------ */
-/*@media (max-width: 20rem) {
-  .profile-header, .project-header, .project-image-wrapper, .project-content, .skills-section, .experience-section {
-    padding: 0 50px;
-  }
-
-  .contact-section {
-    padding: 0 40px;
-  }
-
-  .experience-section {
-    padding: 0 60px;
-  }
-
-  .contact-header {
-    padding: 0 20px;
-  }
-
-  .contact-header p, .contact-header h2 {
-    padding: 0;
-  }
-}*/
 
 @media (min-width: 40rem) {
   .header.show {
