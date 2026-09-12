@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ccarlos-pineda.xo.je/sitemap.xml
