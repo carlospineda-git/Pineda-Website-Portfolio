@@ -239,6 +239,10 @@ header.show {
   outline: 1px auto var(--bg);
 }
 
+.section {
+  scroll-margin-top: 8vh;
+}
+
 /* Mobile Collapsed State Defaults ------------ */
 @media (max-width: 63.99rem) {
   /* Hidden nav state - animated out */
@@ -1375,9 +1379,6 @@ textarea:focus-visible,
   }
 }
 
-@media (min-width: 48rem) {
-}
-
 @media (min-width: 64rem) {
   .header.show {
     transform: translateX(0);
@@ -1432,13 +1433,4 @@ textarea:focus-visible,
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
   }
-}
-
-@media (min-width: 80rem) {
-  .c2 .c2-inner {
-    max-width: 672px;
-  }
-}
-
-@media (min-width: 90rem) {
 }
